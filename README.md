@@ -19,7 +19,7 @@
 1. Clone the repository:
    ```bash
    git clone https://github.com/tarang5757/invite-us.git
-   cd Collaborative-Code-Editor
+   cd invite-us
 
 2. Build the Docker image:
    ```bash
