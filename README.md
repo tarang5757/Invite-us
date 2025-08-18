@@ -10,7 +10,7 @@
 - **Instant updates** – Powered by WebSockets for smooth collaboration.
 - **Run code directly** – Supports different programming languages.
 - **Smart editor** – Syntax highlighting makes code easier to read.
-- **File control** – Create, rename, or delete files on the fly.
+- **File control** – Create, rename, or delete files.
 
 ---
 
@@ -33,4 +33,9 @@
    - http://localhost:5000
    - Or use your private IP (e.g., http://10.12.233.104:5000)
 
-### Images (Soon released)
+## 🖼️ Screenshots
+
+| Home Page | Editor | Run Code | User Interface |
+|-----------|--------|---------|----------------|
+| ![Home](assets/home.png) | ![Editor](assets/editor.png) | ![Run](assets/run.png) | ![User](assets/user.png) |
+
