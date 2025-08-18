@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite-Us Editor</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/theme/material-darker.min.css">
+    
+</head>
+
+<body>
+    
+<div id="editorDiv">
+    <div id="top">
+        <img src="/static/img/logo.png" style="width: 180px;margin-top: 10px;">
+    </div>
+    <div id = bottom>
+
+        <div id="sidebar">
+            <div class="tab active" onclick="toggleTab('file',event)"><img src="/static/img/open-folder.png" style = "width: 30px;"></div>
+            <div class="tab" onclick="toggleTab('run', event)"><img src="/static/img/play.png" style = "width: 30px;"></div>
+            <div class="tab" onclick="toggleTab('users', event)"><img src="/static/img/person.png" style = "width: 30px;"></div>
+        </div>
+
+        <div id="ioAreaDiv">
+
+            <div id="file" class="content">
+                <div id = "file-box">
+                    <div id = "file-top">
+                        <button onclick="createFile()">Create File</button>
+                        <button class="copy-button" onclick="copyToClipboard()">Copy Link</button>                        
+                    </div>
+                    <div id ="file-bottom">
+                        <button id="download "onclick="downloadFile()">Download</button>                         
+                    </div>
+                </div>
+
+                <div id="file1" class="tabEditor active" onclick="toggleEditor('editor1')" oncontextmenu="popupMenu(event)" >index.py</div>
+            </div>
+
+            <div id="run" class="content hidden">
+                <button onclick="fetchData()">Run</button>
+                <p>Input:</p>
+                <textarea id="inputArea"  name="inputArea" rows="10" cols="10"></textarea>
+                <p>Output:</p>
+                <textarea id="outputArea" name="outputArea" rows="10" cols="10"></textarea>
+            </div>
+
+            <div id="users" class=" content hidden"  >
+                <div class="user" style="display: flex; flex-wrap: wrap; flex-direction: row;">
+                    <div class="userWrapper">
+                        <div class="userDisplay">{{ userName[0].upper() }}</div>
+                        <div class="userName" title={{userName}}>{{ userName }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="textAreaDiv">
+            <div id="editor1">
+                <textarea id="textEditor1" rows="100" cols="100">#hello1</textarea>
+            </div>
+        </div>
+
+    </div>
+    
+    <div id="popup" class="popup">
+        <button class="button-popup" style="color: red;" onclick="deleteFile()">Delete</button>
+        <button class="button-popup" onclick="renameFile()">Rename</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+    <script>
+        const room_id = "{{ room_id }}";
+        const userName = "{{ userName }}";
+    </script>
+    <script src="{{ url_for('static', filename ='js/script.js') }}"></script>
+
+</body>
+</html>

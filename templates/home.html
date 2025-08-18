@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite-Us</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+
+    <div class = "my-12 flex h-full min-w-full flex-col items-center justify-evenly sm:flex-row sm:pt-0">
+        <div class="flex w-full animate-up-down justify-center sm:w-1/2 sm:pl-4">
+            <div class="logo-symbol">
+                <div class="network-orb">
+                    <div class="central-node"></div>
+                    <div class="node node-1"></div>
+                    <div class="node node-2"></div>
+                    <div class="node node-3"></div>
+                    <div class="node node-4"></div>
+                    <div class="connection connection-1"></div>
+                    <div class="connection connection-2"></div>
+                    <div class="connection connection-3"></div>
+                    <div class="connection connection-4"></div>
+                    <div class="code-accent bracket-left">&lt;/&gt;</div>
+                    <div class="code-accent bracket-right">&lt;/&gt;</div>
+                </div>
+            </div>
+        </div>
+        <div class = "flex items-center justify-center sm:w-1/2 left-right-pad" >
+            <div class ="container flex w-full max-w-[500px] flex-col items-center justify-center">
+                <img src ="./static/img/logo.png" alt="Invite Us Logo" >
+                <input type ="text" id="roomId" name="roomId" placeholder="Room Id" value="{{ room_id }}" required>
+                <input type ="text" id="userName" name="userName" placeholder="User Name" required>
+                <button onclick = "joinRoom()">Join</button>
+                <button onclick = "generateRoomId()">Generate Room Id</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function generateRoomId(){
+            const uuid = crypto.randomUUID();
+            const roomId = document.getElementById('roomId');
+            roomId.value = uuid;
+        }
+        function joinRoom() {
+            const roomId = document.getElementById('roomId').value;
+            const userName = document.getElementById('userName').value;
+            if(!roomId){
+                alert("Enter valid Room Id");
+            }
+
+            else if(!userName){
+                alert("Enter valid Username");
+            }
+
+            else{
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = `/editor/${roomId}`;
+
+                const userInput = document.createElement("input");
+                userInput.type = "hidden";
+                userInput.name = "username";
+                userInput.value = userName;
+                form.appendChild(userInput);
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+    </script>
+
+</body>
+</html>
