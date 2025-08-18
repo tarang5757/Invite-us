@@ -33,9 +33,17 @@
    - http://localhost:5000
    - Or use your private IP (e.g., http://10.12.233.104:5000)
 
-## 🖼️ Screenshots
+### 🖼️ Screenshots
 
-| Home Page | Editor | Run Code | User Interface |
-|-----------|--------|---------|----------------|
-| ![Home](assets/home.png) | ![Editor](assets/editor.png) | ![Run](assets/run.png) | ![User](assets/user.png) |
+#### Home Page
+![Home Page](assets/home.png)
+
+#### Editor
+![Editor](assets/editor.png)
+
+#### Run Code
+![Run Code](assets/run.png)
+
+#### User Interface
+![User Interface](assets/user.png)
 
